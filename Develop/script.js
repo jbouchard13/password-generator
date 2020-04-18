@@ -1,12 +1,27 @@
 // Set possible values to be used in the password
+
+//Using integers with a loop function to get characters from character codes
 // Lowercase letters
-var lowercaseCharacers = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowercaseCharacers = arrayLoop(97, 122);
 // Uppercase letters
-var uppercaseCharacers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var uppercaseCharacers = arrayLoop(65, 90);
 // Numbers
-var numberCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-// Special Characters
-var specialCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "{", "|", "}", "~", "]"];
+var numberCharacters = arrayLoop(48, 57);
+// Special Characters (concatinating arrays together since symbol numbers aren't all together)
+var specialCharacters = arrayLoop(33, 47)
+  .concat(arrayLoop(58, 64))
+  .concat(arrayLoop(91, 96))
+  .concat(arrayLoop(123, 126))
+  .concat(arrayLoop(145, 148));
+console.log(specialCharacters);
+
+// Connect criteria selectors to the checkboxes on the page
+var addLowercaseEl = document.querySelector("#addLowercase");
+var addUppercaseEl = document.querySelector("#addUppercase");
+var addNumbersEl = document.querySelector("#addNumbers");
+var addSpecialCharactersEl = document.querySelector("#addSpecialCharacters");
+
+
 
 // Add a variable for the textbox where the new password will be displayed
 var passwordEl = document.querySelector("#password");
@@ -23,6 +38,17 @@ generateBtn.addEventListener("click", function () {
     alert("Please enter a number between 8 and 128.")
   };
 
+  // Check to see which variables are clicked from the checkboxes
+  var addLowercase = addLowercaseEl.checked;
+  var addUppercase = addUppercaseEl.checked;
+  var addNumbers = addNumbersEl.checked;
+  var addSpecialCharacters = addSpecialCharactersEl.checked;
+
+
+
+  // Set password variable to the criteria checked off by the user.
+  var password = generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters)
+
   // Select prompted amount of characters at random from the lowercaseEl array
 
 
@@ -34,5 +60,18 @@ generateBtn.addEventListener("click", function () {
 
   // Display new password to the textbox
 });
+// Function to create the password
+function generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters) {
+
+};
+
+// Function to loop through the arrays
+function arrayLoop(low, high) {
+  var array = [];
+  for (var i = low; i <= high; i++) {
+    array.push(i)
+  };
+  return array;
+}
 
 
