@@ -118,6 +118,13 @@ button[disabled] {
   overflow: hidden;
 }
 
+.checkboxes {
+  display: block;
+  font-size: 1rem;
+  text-align: center;
+  
+}
+
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
