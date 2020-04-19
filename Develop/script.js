@@ -13,7 +13,7 @@ var specialCharacters = arrayLoop(33, 47)
   .concat(arrayLoop(91, 96))
   .concat(arrayLoop(123, 126))
   .concat(arrayLoop(145, 148));
-console.log(specialCharacters);
+
 
 // Connect criteria selectors to the checkboxes on the page
 var addLowercaseEl = document.querySelector("#addLowercase");
@@ -21,13 +21,12 @@ var addUppercaseEl = document.querySelector("#addUppercase");
 var addNumbersEl = document.querySelector("#addNumbers");
 var addSpecialCharactersEl = document.querySelector("#addSpecialCharacters");
 
-
-
 // Add a variable for the textbox where the new password will be displayed
 var passwordEl = document.querySelector("#password");
 
-// Add event when the button is clicked to create a series of prompts/confirms for password criteria
+// Add variable for the generate button that will generate the password
 var generateBtn = document.querySelector("#generate");
+
 
 // Add event listener for when the generate button is clicked
 generateBtn.addEventListener("click", function () {
@@ -36,6 +35,7 @@ generateBtn.addEventListener("click", function () {
   // If a number between 8-128 isn't chosen, alert the user to re select a number
   if (passwordLength < 8 || passwordLength > 128) {
     alert("Please enter a number between 8 and 128.")
+    return
   };
 
   // Check to see which variables are clicked from the checkboxes
@@ -43,26 +43,27 @@ generateBtn.addEventListener("click", function () {
   var addUppercase = addUppercaseEl.checked;
   var addNumbers = addNumbersEl.checked;
   var addSpecialCharacters = addSpecialCharactersEl.checked;
+  // Set the password variable to the value from the generate function
+  var password = generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters);
+  passwordEl.textContent = password;
 
-
-
-  // Set password variable to the criteria checked off by the user.
-  var password = generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters)
-
-  // Select prompted amount of characters at random from the lowercaseEl array
-
-
-  // If multiple arrays chosen then concatinate them together to create new arrays
-
-
-
-  // Use a randomizer to select random characters from the chosen arrays
-
-  // Display new password to the textbox
 });
+
 // Function to create the password
 function generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters) {
-
+  // Use if statements to concat the character arrays together if the boxes are checked
+  var passwordCodes = [];
+  if (addLowercase) passwordCodes = passwordCodes.concat(lowercaseCharacers);
+  if (addUppercase) passwordCodes = passwordCodes.concat(uppercaseCharacers);
+  if (addNumbers) passwordCodes = passwordCodes.concat(numberCharacters);
+  if (addSpecialCharacters) passwordCodes = passwordCodes.concat(specialCharacters);
+  // Use a for loop to loop over the arrays and select random numbers the chosen amount of times
+  var passwordChars = []
+  for (var i = 0; i <= passwordLength; i++); {
+    var characterNumber = passwordCodes[Math.floor(Math.random() * passwordLength)];
+    passwordChars.push(String.fromCharCode(characterNumber));
+  }
+  return passwordChars.join("");
 };
 
 // Function to loop through the arrays
