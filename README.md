@@ -7,4 +7,4 @@
     * Once "OK" is clicked, user will receive their randomly generated password
 
 ### Demonstration
-<a href="https://giphy.com/gifs/W63qWTqD7MCIClKiA6/html5" src="https://giphy.com/gifs/W63qWTqD7MCIClKiA6/html5" title="Demo of the password Generator"></a>
+![password-gen-demo](https://user-images.githubusercontent.com/61129844/79707669-48b35a00-828b-11ea-9a56-cf5282ba2d51.gif)
