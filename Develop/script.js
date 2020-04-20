@@ -27,7 +27,6 @@ var passwordEl = document.querySelector("#password");
 // Add variable for the generate button that will generate the password
 var generateBtn = document.querySelector("#generate");
 
-
 // Add event listener for when the generate button is clicked
 generateBtn.addEventListener("click", function () {
   // Prompt the user for a password length
@@ -46,6 +45,8 @@ generateBtn.addEventListener("click", function () {
   // Set the password variable to the value from the generate function
   var password = generatePassword(passwordLength, addLowercase, addUppercase, addNumbers, addSpecialCharacters);
   passwordEl.textContent = password;
+  console.log(password);
+
 
 });
 
@@ -57,22 +58,29 @@ function generatePassword(passwordLength, addLowercase, addUppercase, addNumbers
   if (addUppercase) passwordCodes = passwordCodes.concat(uppercaseCharacers);
   if (addNumbers) passwordCodes = passwordCodes.concat(numberCharacters);
   if (addSpecialCharacters) passwordCodes = passwordCodes.concat(specialCharacters);
+
+
   // Use a for loop to loop over the arrays and select random numbers the chosen amount of times
-  var passwordChars = []
-  for (var i = 0; i <= passwordLength; i++); {
-    var characterNumber = passwordCodes[Math.floor(Math.random() * passwordLength)];
-    passwordChars.push(String.fromCharCode(characterNumber));
-  }
-  return passwordChars.join("");
+
+  var passwordChars = [];
+  console.log(passwordChars);
+  var i = 0
+  while (i < passwordLength) {
+    console.log(passwordLength);
+    var characterCode = passwordCodes[Math.floor(Math.random() * passwordCodes.length)]
+    passwordChars.push(String.fromCharCode(characterCode));
+    i++;
+    console.log(passwordCodes.length);
+  } return passwordChars.join("");
+
+
 };
 
-// Function to loop through the arrays
+// Function to loop through the character code arrays
 function arrayLoop(low, high) {
   var array = [];
   for (var i = low; i <= high; i++) {
     array.push(i)
   };
   return array;
-}
-
-
+};
