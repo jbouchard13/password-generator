@@ -8,3 +8,7 @@
     * Click the "Generate Password" button
     * When prompted, enter the desired password length
     * Once "OK" is clicked, user will receive their randomly generated password
+
+### Credits
+   *HTML and CSS was provided for the project. I only added the checkboxes and styling to them
+   *JavaScript was written by myself for the project.
